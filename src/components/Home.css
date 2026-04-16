@@ -1,0 +1,135 @@
+.home-section {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.home-content {
+  flex: 1;
+}
+
+.greeting {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.name {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: #f8fafc;
+}
+
+.highlight {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
+}
+
+.designation {
+  font-size: 2.2rem;
+  color: #cbd5e1;
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  line-height: 1.8;
+  max-width: 550px;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 25px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 25px var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(14, 165, 233, 0.1);
+}
+
+/* Photo Styling */
+.home-image-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glow-circle {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.hero-img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+  z-index: 1;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  transform: rotate(3deg);
+  transition: transform 0.3s;
+}
+
+.home-image-container:hover .hero-img {
+  transform: rotate(0deg);
+}
+
+.floating-badge {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-weight: 500;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.react-badge { top: 20px; right: 20px; }
+.java-badge { bottom: 30px; left: 10px; animation-delay: 1.5s; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}

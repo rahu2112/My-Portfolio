@@ -1,0 +1,52 @@
+:root {
+  --sidebar-width: 260px;
+  --bg-color: #0f172a;
+  --section-bg: rgba(15, 23, 42, 0.7);
+  --accent: #0ea5e9;
+  --accent-glow: rgba(14, 165, 233, 0.4);
+  --text-muted: #94a3b8;
+}
+
+.app-container {
+  display: flex;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+}
+
+section {
+  min-height: 100vh;
+  padding: 100px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+section:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.section-title::before {
+  content: '<';
+  color: var(--accent);
+  font-family: 'Fira Code', monospace;
+}
+
+.section-title::after {
+  content: '/>';
+  color: var(--accent);
+  font-family: 'Fira Code', monospace;
+}
