@@ -1,34 +1,77 @@
+/* ========================================================
+   1. GLOBAL VARIABLES & RESET
+   ======================================================== */
 :root {
-  --sidebar-width: 260px;
-  --bg-color: #0f172a;
+  --sidebar-width: 280px;
+  --bg-color: #0f172a; /* Dark Navy Background */
   --section-bg: rgba(15, 23, 42, 0.7);
-  --accent: #0ea5e9;
+  --accent: #0ea5e9; /* Light Blue Accent */
   --accent-glow: rgba(14, 165, 233, 0.4);
   --text-muted: #94a3b8;
 }
 
-.app-container {
-  display: flex;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif; /* या अपना फॉन्ट डालें */
+  scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--bg-color);
+  color: #f8fafc;
+  overflow-x: hidden; /* हॉरिजॉन्टल स्क्रॉलिंग बंद करने के लिए */
+}
+
+/* ========================================================
+   2. MAIN DESKTOP LAYOUT
+   ======================================================== */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar (Desktop) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* Main Content Area (Desktop) */
 .main-content {
   margin-left: var(--sidebar-width);
   width: calc(100% - var(--sidebar-width));
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
+/* Section Default Styling */
 section {
   min-height: 100vh;
-  padding: 100px 8%;
+  padding: 80px 8%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  backdrop-filter: blur(10px);
 }
 
 section:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
+/* Section Titles */
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -39,14 +82,135 @@ section:nth-child(even) {
   gap: 15px;
 }
 
-.section-title::before {
-  content: '<';
-  color: var(--accent);
-  font-family: 'Fira Code', monospace;
+.section-title::before { content: '<'; color: var(--accent); font-family: 'Fira Code', monospace; }
+.section-title::after { content: '/>'; color: var(--accent); font-family: 'Fira Code', monospace; }
+
+
+/* ========================================================
+   3. MOBILE RESPONSIVE RULES (MAGIC HAPPENS HERE)
+   ======================================================== */
+
+/* TABLET & MOBILE (992px and below) */
+@media screen and (max-width: 992px) {
+  
+  /* A. Main Content Full Width */
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-bottom: 80px; /* नीचे साइडबार के लिए जगह छोड़ी */
+  }
+
+  section {
+    padding: 60px 5%; /* साइड से जगह कम की */
+  }
+
+  .section-title {
+    font-size: 2rem;
+    justify-content: center; /* मोबाइल में टाइटल बीच में */
+  }
+
+  /* B. Sidebar -> Bottom Navigation Bar (Strict Rules) */
+  .sidebar {
+    width: 100% !important;
+    height: 70px !important;
+    top: auto !important;
+    bottom: 0 !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    border-right: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* फालतू चीज़ें छुपाएं (Logo, Footer Text) */
+  .logo-container, 
+  .sidebar-footer,
+  .profile-img-container { 
+    display: none !important; 
+  }
+
+  /* नेविगेशन मेनू को नीचे फैलाएं */
+  .nav-menu {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-menu ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .nav-menu li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* मेनू के लिंक्स (Icons + Text) */
+  .nav-menu li a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.75rem !important; /* टेक्स्ट छोटा किया */
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    padding: 5px 10px !important;
+  }
+
+  .nav-menu li a i {
+    font-size: 1.4rem !important; /* आइकॉन बड़ा किया */
+    margin-right: 0 !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Hover Effect on Mobile */
+  .nav-menu li a:hover, 
+  .nav-menu li a.active {
+    color: var(--accent) !important;
+  }
 }
 
-.section-title::after {
-  content: '/>';
-  color: var(--accent);
-  font-family: 'Fira Code', monospace;
+/* SMALL MOBILE PHONES (768px and below) */
+@media screen and (max-width: 768px) {
+  
+  .section-title { font-size: 1.8rem; }
+  
+  /* Resume Editor Fix */
+  .editor-tabs { flex-wrap: wrap; justify-content: center; }
+  .tab { padding: 8px 12px; font-size: 0.85rem; }
+  
+  /* Contact / Projects Grids (1 Item per Row) */
+  .projects-grid, 
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About / Home Section Stacking */
+  .home-section, 
+  .about-wrapper {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* Text Sizes */
+  .name { font-size: 2.5rem !important; }
+  .designation { font-size: 1.2rem !important; }
+}
+
+/* VERY SMALL SCREENS (480px and below) */
+@media screen and (max-width: 480px) {
+  .name { font-size: 2rem !important; }
+  .nav-menu li a span { display: none !important; } /* बहुत छोटे फोन में मेनू का टेक्स्ट छुपा कर सिर्फ आइकॉन दिखाएंगे */
+  .nav-menu li a i { font-size: 1.6rem !important; margin-bottom: 0 !important;}
 }
