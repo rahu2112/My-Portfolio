@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
+  // shorting the Navbar in array
   const navLinks = [
     { name: 'Home', icon: 'bi-house-door' },
     { name: 'About', icon: 'bi-person' },
@@ -19,10 +20,11 @@ const Navbar = () => {
       </div>
       <nav className="nav-menu">
         <ul>
+          {/* put the name and icon of the link in the navbar using map function */}
           {navLinks.map((link) => (
             <li key={link.name}>
               <a href={`#${link.name.toLowerCase()}`}>
-                {/* અહીં આપણે આઇકન અને નામ બંને પ્રિન્ટ કરી રહ્યા છીએ */}
+               {/* print icon and name of the link in the navbar */}
                 <i className={`bi ${link.icon}`}></i> {link.name}
               </a>
             </li>
