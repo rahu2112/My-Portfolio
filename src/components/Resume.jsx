@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Resume.css';
 
 const Resume = () => {
-  // 3 ટેબ્સ કંટ્રોલ કરવા માટે State
+  // control 3 tab in the resume section using state
   const [activeTab, setActiveTab] = useState('experience');
 
   return (
