@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Resume.css';
 
 const Resume = () => {
-  // control 3 tab in the resume section using state
+  // control 3 tab 
   const [activeTab, setActiveTab] = useState('experience');
 
   return (

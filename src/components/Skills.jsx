@@ -2,7 +2,7 @@ import React from 'react';
 import './Skills.css';
 
 const Skills = () => {
-  // ટેકનિકલ સ્કીલ્સ ઈમેજની લિંક સાથે
+  // tecnical skills and soft skills in array
   const technicalSkills = [
     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
     { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
